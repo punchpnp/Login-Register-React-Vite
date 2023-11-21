@@ -1,11 +1,8 @@
-// SignUp.js
+// Login.js
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
-const SignUp = () => {
+const Login = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
   });
@@ -20,36 +17,15 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your signup logic here
+    // Add your login logic here
     console.log("Form submitted:", formData);
+    // You can add authentication logic here, such as calling an API
   };
 
   return (
     <div>
-      <h2>Sign Up</h2>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          First Name:
-          <input
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-
-        <label>
-          Last Name:
-          <input
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-
         <label>
           Email:
           <input
@@ -72,13 +48,10 @@ const SignUp = () => {
         </label>
         <br />
 
-        <button type="submit">Sign Up</button>
+        <button type="submit">Login</button>
       </form>
-      <Link to="/login">
-        <button type="submit">Log In</button>
-      </Link>
     </div>
   );
 };
 
-export default SignUp;
+export default Login;
