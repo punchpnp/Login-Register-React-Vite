@@ -1,7 +1,11 @@
 // Login.js
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,9 +21,16 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log("Form submitted:", formData);
-    // You can add authentication logic here, such as calling an API
+    // Add your signup logic here
+    axios
+      .post("http://localhost:3001/login", formData)
+      .then((result) => {
+        console.log(result);
+        if (result.data == "Success") {
+          navigate("/home");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

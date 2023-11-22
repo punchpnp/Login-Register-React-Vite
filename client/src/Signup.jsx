@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -23,8 +25,11 @@ const SignUp = () => {
     e.preventDefault();
     // Add your signup logic here
     axios
-      .post("http://localhost:4000/register", formData)
-      .then((result) => console.log(result))
+      .post("http://localhost:3001/register", formData)
+      .then((result) => {
+        console.log(result);
+        navigate("/login");
+      })
       .catch((err) => console.log(err));
   };
 
