@@ -1,6 +1,7 @@
 // SignUp.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,10 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your signup logic here
-    console.log("Form submitted:", formData);
+    axios
+      .post("http://localhost:4000/register", formData)
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
   };
 
   return (
